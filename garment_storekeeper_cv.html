@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV – Garment Store Keeper</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Nunito+Sans:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --navy: #1a2744;
+        --gold: #c8973a;
+        --gold-lt: #e8c06a;
+        --ivory: #fafaf7;
+        --ash: #f3f0eb;
+        --text: #222831;
+        --muted: #6b7280;
+        --sidebar-w: 270px;
+      }
+
+      body {
+        font-family: "Nunito Sans", sans-serif;
+        background: #ddd8cf;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        padding: 40px 20px;
+      }
+
+      /* ── PAPER ── */
+      .cv {
+        width: 900px;
+        min-height: 1120px;
+        background: var(--ivory);
+        display: flex;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* ── DECORATIVE STITCHING (signature element) ── */
+      .cv::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: var(--sidebar-w);
+        width: 4px;
+        height: 100%;
+        background: repeating-linear-gradient(
+          to bottom,
+          var(--gold) 0px,
+          var(--gold) 10px,
+          transparent 10px,
+          transparent 18px
+        );
+        opacity: 0.6;
+      }
+
+      /* ══════════════════════════════
+     SIDEBAR
+  ══════════════════════════════ */
+      .sidebar {
+        width: var(--sidebar-w);
+        background: var(--navy);
+        padding: 0;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      /* Gold chevron top-cap */
+      .sidebar-header {
+        background: var(--gold);
+        padding: 32px 24px 24px;
+        position: relative;
+      }
+      .sidebar-header::after {
+        content: "";
+        position: absolute;
+        bottom: -20px;
+        left: 0;
+        right: 0;
+        height: 22px;
+        background: var(--gold);
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+      }
+
+      /* Photo circle */
+      .photo-ring {
+        width: 88px;
+        height: 88px;
+        border-radius: 50%;
+        border: 3px solid rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 0.15);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 14px;
+        font-size: 36px;
+        color: #fff;
+        overflow: hidden;
+      }
+
+      .sidebar-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 20px;
+        font-weight: 700;
+        color: #fff;
+        text-align: center;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+      }
+      .sidebar-role {
+        font-size: 10.5px;
+        font-weight: 700;
+        color: var(--navy);
+        text-align: center;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-top: 5px;
+      }
+
+      /* Sidebar body */
+      .sidebar-body {
+        padding: 48px 22px 28px;
+        flex: 1;
+      }
+
+      .sb-section {
+        margin-bottom: 26px;
+      }
+
+      .sb-title {
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold-lt);
+        border-bottom: 1px solid rgba(200, 151, 58, 0.3);
+        padding-bottom: 6px;
+        margin-bottom: 12px;
+      }
+
+      .sb-contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 9px;
+      }
+      .sb-icon {
+        font-size: 13px;
+        color: var(--gold);
+        margin-top: 1px;
+        flex-shrink: 0;
+        width: 16px;
+      }
+      .sb-contact-item span {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.82);
+        line-height: 1.45;
+      }
+
+      /* Skill bars */
+      .skill-item {
+        margin-bottom: 11px;
+      }
+      .skill-label {
+        font-size: 11.5px;
+        color: rgba(255, 255, 255, 0.85);
+        margin-bottom: 4px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .skill-bar {
+        height: 4px;
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .skill-fill {
+        height: 100%;
+        border-radius: 2px;
+        background: linear-gradient(to right, var(--gold), var(--gold-lt));
+      }
+
+      /* Language badges */
+      .lang-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .lang-badge {
+        font-size: 10.5px;
+        font-weight: 700;
+        background: rgba(200, 151, 58, 0.2);
+        color: var(--gold-lt);
+        border: 1px solid rgba(200, 151, 58, 0.35);
+        border-radius: 3px;
+        padding: 3px 9px;
+        letter-spacing: 0.5px;
+      }
+
+      /* Soft skills tags */
+      .tag-cloud {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+      .tag {
+        font-size: 10px;
+        padding: 3px 8px;
+        border-radius: 2px;
+        background: rgba(255, 255, 255, 0.07);
+        color: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      /* ══════════════════════════════
+     MAIN CONTENT
+  ══════════════════════════════ */
+      .main {
+        flex: 1;
+        padding: 38px 36px 40px 42px;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+      }
+
+      /* Header strip */
+      .main-header {
+        border-bottom: 2px solid var(--ash);
+        padding-bottom: 18px;
+      }
+      .main-header h1 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 38px;
+        font-weight: 700;
+        color: var(--navy);
+        letter-spacing: 0.5px;
+        line-height: 1.05;
+      }
+      .main-header h1 span {
+        color: var(--gold);
+      }
+      .main-tagline {
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 3.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-top: 5px;
+      }
+
+      /* Section heading */
+      .sec-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+      .sec-title h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--navy);
+        white-space: nowrap;
+        letter-spacing: 0.3px;
+      }
+      .sec-line {
+        flex: 1;
+        height: 1.5px;
+        background: var(--ash);
+      }
+      .sec-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--gold);
+        flex-shrink: 0;
+      }
+
+      /* Profile */
+      .profile-text {
+        font-size: 13px;
+        color: #3d4558;
+        line-height: 1.78;
+        background: var(--ash);
+        border-left: 3.5px solid var(--gold);
+        padding: 14px 16px;
+        border-radius: 0 6px 6px 0;
+      }
+
+      /* Experience card */
+      .exp-card {
+        position: relative;
+        padding: 18px 18px 18px 22px;
+        border-radius: 6px;
+        background: #fff;
+        border: 1px solid #eae7e0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        margin-bottom: 14px;
+      }
+      .exp-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        border-radius: 6px 0 0 6px;
+        background: var(--gold);
+      }
+      .exp-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 4px;
+      }
+      .exp-title {
+        font-size: 15px;
+        font-weight: 800;
+        color: var(--navy);
+      }
+      .exp-badge {
+        font-size: 9.5px;
+        font-weight: 800;
+        background: var(--navy);
+        color: var(--gold-lt);
+        padding: 3px 10px;
+        border-radius: 20px;
+        white-space: nowrap;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+      }
+      .exp-company {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--gold);
+        margin-bottom: 10px;
+      }
+      .exp-bullets {
+        list-style: none;
+        padding: 0;
+      }
+      .exp-bullets li {
+        font-size: 12.5px;
+        color: #3d4558;
+        line-height: 1.65;
+        padding: 2px 0 2px 16px;
+        position: relative;
+      }
+      .exp-bullets li::before {
+        content: "▸";
+        color: var(--gold);
+        position: absolute;
+        left: 0;
+        font-size: 10px;
+        top: 3px;
+      }
+
+      /* Key stats strip */
+      .stats-strip {
+        display: flex;
+        gap: 0;
+        background: var(--navy);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .stat-box {
+        flex: 1;
+        text-align: center;
+        padding: 16px 8px;
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .stat-box:last-child {
+        border-right: none;
+      }
+      .stat-num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--gold-lt);
+        line-height: 1;
+      }
+      .stat-label {
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.55);
+        margin-top: 4px;
+      }
+
+      /* Core competencies grid */
+      .comp-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      .comp-item {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        background: var(--ash);
+        border-radius: 5px;
+        padding: 9px 12px;
+        font-size: 12px;
+        color: var(--text);
+        font-weight: 600;
+        border: 1px solid #e4e0d8;
+      }
+      .comp-icon {
+        font-size: 15px;
+        flex-shrink: 0;
+      }
+
+      /* Education */
+      .edu-item {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        margin-bottom: 8px;
+      }
+      .edu-dot-line {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .edu-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--gold);
+        margin-top: 4px;
+        flex-shrink: 0;
+      }
+      .edu-line {
+        width: 2px;
+        flex: 1;
+        background: var(--ash);
+        min-height: 20px;
+      }
+      .edu-content {
+        flex: 1;
+        padding-bottom: 8px;
+      }
+      .edu-degree {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--navy);
+      }
+      .edu-school {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+
+      /* Print */
+      @media print {
+        body {
+          background: #fff;
+          padding: 0;
+        }
+        .cv {
+          box-shadow: none;
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cv">
+      <!-- ══ SIDEBAR ══ -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <img src="profile4.jpeg" alt="Afaroj Miya" class="photo-ring" />
+          <div class="sidebar-name">AFAROJ MIYA</div>
+          <div class="sidebar-role">Store Keeper · Garment Specialist</div>
+        </div>
+
+        <div class="sidebar-body">
+          <!-- CONTACT -->
+          <div class="sb-section">
+            <div class="sb-title">Contact</div>
+            <div class="sb-contact-item">
+              <span class="sb-icon">📞</span>
+              <span>+974 30312629</span>
+            </div>
+            <div class="sb-contact-item">
+              <span class="sb-icon">✉️</span>
+              <span>your.email@email.com</span>
+            </div>
+            <div class="sb-contact-item">
+              <span class="sb-icon">📍</span>
+              <span>Doha, Qatar</span>
+            </div>
+            <!-- <div class="sb-contact-item">
+              <span class="sb-icon">🪪</span>
+              <span>QID: XXXXXXXXXXX</span>
+            </div> -->
+            <!-- <div class="sb-contact-item">
+              <span class="sb-icon">🚗</span>
+              <span>Valid Qatar Driving License</span>
+            </div> -->
+          </div>
+
+          <!-- TECHNICAL SKILLS -->
+          <div class="sb-section">
+            <div class="sb-title">Core Skills</div>
+
+            <div class="skill-item">
+              <div class="skill-label"><span>Inventory Management</span></div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 98%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-label">
+                <span>Garment Store Operations</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 97%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-label"><span>Visual Merchandising</span></div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 93%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-label"><span>Vendor Management</span></div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 90%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-label">
+                <span>Factory Production Control</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 95%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-label"><span>Customer Service</span></div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 96%"></div>
+              </div>
+            </div>
+            <!-- <div class="skill-item">
+              <div class="skill-label"><span>Quality Control</span></div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 92%"></div>
+              </div>
+            </div> -->
+          </div>
+
+          <!-- LANGUAGES -->
+          <div class="sb-section">
+            <div class="sb-title">Languages</div>
+            <div class="lang-grid">
+              <span class="lang-badge">Arabic</span>
+              <span class="lang-badge">English</span>
+              <span class="lang-badge">Hindi</span>
+              <span class="lang-badge">Nepali</span>
+            </div>
+          </div>
+
+          <!-- SOFT SKILLS -->
+          <div class="sb-section">
+            <div class="sb-title">Soft Skills</div>
+            <div class="tag-cloud">
+              <span class="tag">Problem Solving</span>
+              <span class="tag">Attention to Detail</span>
+              <span class="tag">Adaptability</span>
+              <span class="tag">Time Management</span>
+              <span class="tag">Communication</span>
+              <span class="tag">Negotiation</span>
+              <span class="tag">Initiative</span>
+            </div>
+          </div>
+
+          <!-- TOOLS -->
+          <div class="sb-section">
+            <div class="sb-title">Tools &amp; Systems</div>
+            <div class="tag-cloud">
+              <span class="tag">MS Excel / Word</span>
+              <span class="tag">Stock Register</span>
+              <span class="tag">Barcode / POS</span>
+              <span class="tag">Inventory Software</span>
+            </div>
+          </div>
+
+          <!-- Education -->
+          <section>
+            <div class="sec-section">
+              <h2 class="sb-title">Education &amp; Training</h2>
+            </div>
+            <div class="edu-item">
+              <div class="edu-dot-line">
+                <div class="edu-dot"></div>
+                <div class="edu-line"></div>
+              </div>
+              <div class="edu-content">
+                <div class="skill-label">
+                  Secondary School Certificate (SLC / SEE)
+                </div>
+                <div class="edu-school">
+                  Shree Sharda Ma Vi ,Bahuwari. — 2006
+                </div>
+              </div>
+            </div>
+            <div class="edu-item">
+              <div class="edu-dot-line">
+                <div class="edu-dot"></div>
+                <div class="edu-line"></div>
+              </div>
+              <div class="edu-content">
+                <div class="skill-label">
+                  Garment Production &amp; Sewing – On-the-Job Training
+                </div>
+                <div class="edu-school">
+                  Own Factory, 2014 – 2026 (Advanced Practical Experience)
+                </div>
+              </div>
+            </div>
+            <div class="edu-item">
+              <div class="edu-dot-line">
+                <div class="edu-dot"></div>
+                <div class="edu-line"></div>
+              </div>
+              <div class="edu-content">
+                <div class="skill-label">
+                  Retail Operations &amp; Store Management – On-the-Job Training
+                </div>
+                <div class="edu-school">
+                  Souq Waqif Cloth Shop, Doha, Qatar – 2008 to 2013
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </aside>
+
+      <!-- ══ MAIN ══ -->
+      <main class="main">
+        <!-- Header -->
+        <div class="main-header">
+          <h1>AFAROJ <span>MIYA</span></h1>
+          <div class="main-tagline">
+            Garment Store Keeper &nbsp;·&nbsp; 18+ Years of Industry Excellence
+          </div>
+        </div>
+
+        <!-- Key Stats -->
+        <div class="stats-strip">
+          <div class="stat-box">
+            <div class="stat-num">18+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">5</div>
+            <div class="stat-label">Years Qatar Retail</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">12</div>
+            <div class="stat-label">Years Factory Owner</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">4</div>
+            <div class="stat-label">Languages Spoken</div>
+          </div>
+        </div>
+
+        <!-- Profile -->
+        <section>
+          <div class="sec-title">
+            <span class="sec-dot"></span>
+            <h2>Professional Profile</h2>
+            <div class="sec-line"></div>
+          </div>
+          <div class="profile-text">
+            A results-driven and highly dedicated Garment Industry Professional
+            with over
+            <strong>18 years of comprehensive experience</strong> spanning
+            retail store operations, warehouse/storeroom management, production
+            factory management, and direct customer service. Proven track record
+            in managing all garment types — from traditional Gulf thobes and
+            abayas to modern ladies' wear and menswear — with an exceptional eye
+            for detail in folding, ironing, tagging, and rack display. A
+            multilingual communicator (Arabic, English, Hindi, Nepali) with deep
+            knowledge of Qatar's retail and garment market, well-equipped to
+            optimize store operations, maintain inventory accuracy, and deliver
+            excellence at every stage of the supply chain.
+          </div>
+        </section>
+
+        <!-- Work Experience -->
+        <section>
+          <div class="sec-title">
+            <span class="sec-dot"></span>
+            <h2>Work Experience</h2>
+            <div class="sec-line"></div>
+          </div>
+
+          <!-- Job 1 -->
+          <div class="exp-card">
+            <div class="exp-top">
+              <div class="exp-title">Founder &amp; Production Manager</div>
+              <div class="exp-badge">2014 – 2026</div>
+            </div>
+            <div class="exp-company">
+              Own Garment Factory &amp; Retail Shop — Jeetpur(Bara) / Nepal
+            </div>
+            <ul class="exp-bullets">
+              <li>
+                Established and fully operated a garment manufacturing factory
+                producing ladies' wear, gents' clothing, traditional attire, and
+                custom designs from concept to finished product.
+              </li>
+              <li>
+                Managed end-to-end production workflow including fabric
+                sourcing, cutting, sewing, finishing, quality inspection,
+                pressing, and packaging.
+              </li>
+              <li>
+                Led and trained a production team of tailors, cutters, and
+                finishing staff, maintaining high output standards and meeting
+                delivery deadlines consistently.
+              </li>
+              <li>
+                Controlled stock and inventory across the factory, own retail
+                shop, and multiple branch outlets; implemented FIFO stock
+                rotation to minimise waste and losses.
+              </li>
+              <li>
+                Handled wholesale and retail supply to third-party boutiques and
+                traders, maintaining strong B2B and B2C relationships.
+              </li>
+              <li>
+                Managed store layout, visual merchandising, rack display,
+                folding, garment steaming/ironing, and seasonal collection
+                rotation to maximise sales appeal.
+              </li>
+              <li>
+                Maintained all purchase orders, delivery notes, stock records,
+                and supplier invoices with full accountability.
+              </li>
+              <li>
+                Oversaw cash flow, pricing strategy, and negotiated fabric and
+                accessory supply contracts with vendors.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Job 2 -->
+          <div class="exp-card">
+            <div class="exp-top">
+              <div class="exp-title">Store Keeper &amp; Garment Specialist</div>
+              <div class="exp-badge">2008 – 2013</div>
+            </div>
+            <div class="exp-company">
+              Cloth &amp; Garment Shop — Souq Waqif, Doha, Qatar
+            </div>
+            <ul class="exp-bullets">
+              <li>
+                Fully responsible for day-to-day operations of a busy
+                traditional garment shop in Qatar's iconic Souq Waqif, serving a
+                diverse international customer base.
+              </li>
+              <li>
+                Managed the storeroom independently: organised all garment types
+                (thobes, abayas, suits, casual wear, fabrics) by category, size,
+                colour, and season for quick retrieval.
+              </li>
+              <li>
+                Prepared, folded, ironed, steamed, and arranged garments on
+                display racks with a focus on visual appeal and product
+                presentation standards.
+              </li>
+              <li>
+                Provided expert sales advice and product recommendations to
+                customers in Arabic, English and Hindi, resulting in high
+                repeat-customer rates.
+              </li>
+              <li>
+                Coordinated with vendors and suppliers for stock replenishment,
+                negotiated purchase prices, and maintained healthy stock levels
+                throughout peak and off-peak seasons.
+              </li>
+              <li>
+                Tracked daily stock movement, raised stock shortage alerts,
+                processed incoming shipments, and reconciled inventory records
+                against physical stock.
+              </li>
+              <li>
+                Handled POS transactions, daily cash reconciliation, and
+                maintained accurate sales and stock registers.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Core Competencies -->
+        <section>
+          <div class="sec-title">
+            <span class="sec-dot"></span>
+            <h2>Core Competencies</h2>
+            <div class="sec-line"></div>
+          </div>
+          <div class="comp-grid">
+            <div class="comp-item">
+              <span class="comp-icon">📦</span> Stock &amp; Inventory Control
+            </div>
+            <div class="comp-item">
+              <span class="comp-icon">👔</span> Garment Preparation &amp;
+              Presentation
+            </div>
+            <div class="comp-item">
+              <span class="comp-icon">🏪</span> Store &amp; Storeroom Management
+            </div>
+            <div class="comp-item">
+              <span class="comp-icon">🪡</span> Sewing, Cutting &amp; Pattern
+              Knowledge
+            </div>
+            <div class="comp-item">
+              <span class="comp-icon">🤝</span> Vendor &amp; Supplier
+              Coordination
+            </div>
+            <div class="comp-item">
+              <span class="comp-icon">🛍️</span> Visual Merchandising &amp;
+              Display
+            </div>
+            <div class="comp-item">
+              <span class="comp-icon">🔍</span> Quality Control &amp; Fabric
+              Inspection
+            </div>
+            <div class="comp-item">
+              <span class="comp-icon">📊</span> Stock Record Keeping &amp;
+              Reporting
+            </div>
+            <div class="comp-item">
+              <span class="comp-icon">♻️</span> FIFO / LIFO Stock Rotation
+            </div>
+            <div class="comp-item">
+              <span class="comp-icon">💬</span> Multilingual Customer Service
+            </div>
+            <div class="comp-item">
+              <span class="comp-icon">⚡</span> Loss Prevention &amp; Shrinkage
+              Control
+            </div>
+            <div class="comp-item">
+              <span class="comp-icon">🏭</span> Production Planning &amp; Team
+              Leadership
+            </div>
+          </div>
+        </section>
+
+        <!-- Declaration -->
+        <!-- <section
+          style="
+            margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px solid var(--ash);
+          "
+        >
+          <p style="font-size: 11px; color: var(--muted); line-height: 1.7">
+            <strong style="color: var(--navy)">Declaration:</strong> I hereby
+            declare that all the information provided above is true and correct
+            to the best of my knowledge and belief. I am fully available for
+            immediate joining and happy to provide supporting documents upon
+            request.
+          </p>
+        </section> -->
+      </main>
+    </div>
+  </body>
+</html>
